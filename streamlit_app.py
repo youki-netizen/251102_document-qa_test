@@ -9,6 +9,14 @@ st.write(
     "To use this app, you need to provide a Google Gemini API key, which you can get [here](https://aistudio.google.com/app/apikey). "
 )
 
+# モデル選択
+model_options = {
+    "Gemini 2.5 Flash": "gemini-2.5-flash",
+    "Gemini 2.5 Pro": "gemini-2.5-pro"
+}
+selected_model_label = st.selectbox("Select Gemini model", list(model_options.keys()), index=0)
+selected_model = model_options[selected_model_label]
+
 # Google Gemini API Key入力
 gemini_api_key = st.text_input("Google Gemini API Key", type="password")
 if not gemini_api_key:
@@ -41,8 +49,8 @@ else:
         # Geminiプロンプト生成
         prompt = f"Here's a document:\n{document}\n\n---\n\nQuestion: {question}\nAnswer:"
 
-        # Gemini APIエンドポイント
-        endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+        # Gemini APIエンドポイント（選択したモデルを使用）
+        endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{selected_model}:generateContent"
         headers = {
             "Content-Type": "application/json"
         }
