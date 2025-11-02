@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
+import time
 
 # Show title and description.
 st.title("📄 Document question answering (Gemini API版)")
@@ -62,8 +63,19 @@ else:
             "key": gemini_api_key
         }
 
+        # 進行状況バーの表示
+        progress_text = "Gemini APIで回答を生成中です..."
+        progress_bar = st.progress(0, text=progress_text)
+        for percent_complete in range(1, 51):
+            time.sleep(0.01)
+            progress_bar.progress(percent_complete * 2, text=progress_text)
+        
         # APIリクエスト
         response = requests.post(endpoint, headers=headers, params=params, json=payload)
+        progress_bar.progress(100, text="回答が生成されました！")
+        time.sleep(0.5)
+        progress_bar.empty()
+
         if response.status_code == 200:
             try:
                 answer = response.json()["candidates"][0]["content"]["parts"][0]["text"]
