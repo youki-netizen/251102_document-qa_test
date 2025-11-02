@@ -31,7 +31,7 @@ else:
     #)
 
     uploaded_file = st.file_uploader(
-        "Upload a document (.csv)", type=("csv")
+        "配合変化データベースのcsvファイル（UTF8）を選んでください", type=("csv")
     )
 
     # 質問入力
