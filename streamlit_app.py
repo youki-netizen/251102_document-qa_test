@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import pandas as pd
 
 # Show title and description.
 st.title("📄 Document question answering (Gemini API版)")
@@ -15,7 +16,7 @@ if not gemini_api_key:
 else:
     # ファイルアップロード
     uploaded_file = st.file_uploader(
-        "Upload a document (.txt or .md)", type=("txt", "md")
+        "Upload a document (.txt, .md, or .csv)", type=("txt", "md", "csv")
     )
 
     # 質問入力
@@ -26,8 +27,16 @@ else:
     )
 
     if uploaded_file and question:
+        # ファイル形式判定
+        file_type = uploaded_file.name.split('.')[-1]
+
         # ドキュメント内容取得
-        document = uploaded_file.read().decode()
+        if file_type == "csv":
+            # CSVファイルはデータフレームで読み込んで、テキスト化
+            df = pd.read_csv(uploaded_file)
+            document = df.to_csv(index=False)
+        else:
+            document = uploaded_file.read().decode()
 
         # Geminiプロンプト生成
         prompt = f"Here's a document:\n{document}\n\n---\n\nQuestion: {question}\nAnswer:"
