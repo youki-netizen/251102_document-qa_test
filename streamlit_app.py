@@ -18,7 +18,8 @@ selected_model_label = st.selectbox("Select Gemini model", list(model_options.ke
 selected_model = model_options[selected_model_label]
 
 # Google Gemini API Key入力
-gemini_api_key = st.text_input("Google Gemini API Key", type="password")
+#gemini_api_key = st.text_input("Google Gemini API Key", type="password")
+gemini_api_key = st.secrets['251102']['gemini_api_key']
 if not gemini_api_key:
     st.info("Please add your Gemini API key to continue.", icon="🗝️")
 else:
