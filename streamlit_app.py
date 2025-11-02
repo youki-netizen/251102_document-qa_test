@@ -29,9 +29,6 @@ else:
     #uploaded_file = st.file_uploader(
         "Upload a document (.txt, .md, or .csv)", type=("txt", "md", "csv")
     )
-    uploaded_file = st.file_uploader(
-        "Upload a document (.csv)", type=("csv")
-    )
 
     # 質問入力
     question = st.text_area(
