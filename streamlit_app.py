@@ -16,7 +16,7 @@ model_options = {
     "Gemini 2.5 Flash": "gemini-2.5-flash",
     "Gemini 2.5 Pro": "gemini-2.5-pro"
 }
-selected_model_label = st.selectbox("Select Gemini model", list(model_options.keys()), index=0)
+selected_model_label = st.selectbox("Gemini model を選んでください", list(model_options.keys()), index=0)
 selected_model = model_options[selected_model_label]
 
 # Google Gemini API Key入力
