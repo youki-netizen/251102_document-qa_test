@@ -6,7 +6,7 @@ import time
 # Show title and description.
 #st.title("📄 Document question answering (Gemini API版)")
 st.title("📄簡易配合変化確認システム")
-st.write(
+#st.write(
     "Upload a document below and ask a question about it – Gemini API will answer! "
     "To use this app, you need to provide a Google Gemini API key, which you can get [here](https://aistudio.google.com/app/apikey). "
 )
@@ -26,8 +26,11 @@ if not gemini_api_key:
     st.info("Please add your Gemini API key to continue.", icon="🗝️")
 else:
     # ファイルアップロード
-    uploaded_file = st.file_uploader(
+    #uploaded_file = st.file_uploader(
         "Upload a document (.txt, .md, or .csv)", type=("txt", "md", "csv")
+    )
+    uploaded_file = st.file_uploader(
+        "Upload a document (.csv)", type=("csv")
     )
 
     # 質問入力
