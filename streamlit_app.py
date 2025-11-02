@@ -42,7 +42,7 @@ else:
         prompt = f"Here's a document:\n{document}\n\n---\n\nQuestion: {question}\nAnswer:"
 
         # Gemini APIエンドポイント
-        endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+        endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
         headers = {
             "Content-Type": "application/json"
         }
