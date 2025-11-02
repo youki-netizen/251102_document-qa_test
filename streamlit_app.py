@@ -26,8 +26,12 @@ if not gemini_api_key:
     st.info("Please add your Gemini API key to continue.", icon="🗝️")
 else:
     # ファイルアップロード
+    #uploaded_file = st.file_uploader(
+    #    "Upload a document (.txt, .md, or .csv)", type=("txt", "md", "csv")
+    #)
+
     uploaded_file = st.file_uploader(
-        "Upload a document (.txt, .md, or .csv)", type=("txt", "md", "csv")
+        "Upload a document (.csv)", type=("csv")
     )
 
     # 質問入力
