@@ -36,8 +36,8 @@ else:
 
     # 質問入力
     question = st.text_area(
-        "Now ask a question about the document!",
-        placeholder="Can you give me a short summary?",
+        "質問内容を書き込んでください",
+        placeholder="ここに質問内容を書く",
         disabled=not uploaded_file,
     )
 
